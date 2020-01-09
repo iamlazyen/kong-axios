@@ -2,7 +2,7 @@ import { AxiaosConfig } from '../types/idex'
 import { xhr } from './xhr'
 import { transfomURL } from './url'
 
-function axios(config: AxiaosConfig) {
+export function axios(config: AxiaosConfig) {
   transformConfig(config)
   xhr(config)
 }

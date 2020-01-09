@@ -1,3 +1,1 @@
-const axios = 'kdp3'
-
-export default axios
+export { axios } from './core/index'
