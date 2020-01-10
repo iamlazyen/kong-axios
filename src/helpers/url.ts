@@ -12,7 +12,7 @@ function encode(val: string): string {
     .replace(/%5D/gi, ']')
 }
 
-export function buildURL(url: string, params: any) {
+export function buildURL(url: string, params?: any) {
   let result = url
 
   if (!params) return result
@@ -44,9 +44,9 @@ export function buildURL(url: string, params: any) {
   let serializeURL = partForURL.join('&')
 
   if (serializeURL) {
-    const markIndex = serializeURL.indexOf('#')
+    const markIndex = url.indexOf('#')
     if (markIndex !== -1) {
-      serializeURL = serializeURL.slice(0, markIndex)
+      result = url.slice(0, markIndex)
     }
 
     result += (url.includes('?') ? `&` : `?`) + serializeURL
