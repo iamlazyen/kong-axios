@@ -1,12 +1,17 @@
 import { AxiaosConfig } from '../types/idex'
 import { xhr } from './xhr'
-import { transfomURL } from './url'
+import { buildURL } from '../helpers/url'
 
 export function axios(config: AxiaosConfig) {
-  transformConfig(config)
+  processConfig(config)
   xhr(config)
 }
 
-function transformConfig(config: AxiaosConfig) {
-  config.url = transfomURL(config)
+function processConfig(config: AxiaosConfig) {
+  config.url = transformURL(config)
+
+  function transformURL(config: AxiaosConfig) {
+    const { url, params } = config
+    return buildURL(url, params)
+  }
 }

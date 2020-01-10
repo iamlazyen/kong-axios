@@ -1,5 +1,5 @@
 import { AxiaosConfig } from '../types/idex'
-import { isDate, isObject } from '../helpers'
+import { isDate, isObject } from './index'
 
 function encode(val: string): string {
   return encodeURIComponent(val)
@@ -12,10 +12,10 @@ function encode(val: string): string {
     .replace(/%5D/gi, ']')
 }
 
-export function transfomURL(config: AxiaosConfig) {
-  let { url, params } = config
+export function buildURL(url: string, params: any) {
+  let result = url
 
-  if (!params) return url
+  if (!params) return result
 
   const partForURL: string[] = []
   Object.keys(params).forEach(key => {
@@ -49,8 +49,8 @@ export function transfomURL(config: AxiaosConfig) {
       serializeURL = serializeURL.slice(0, markIndex)
     }
 
-    url += (url.includes('?') ? `&` : `?`) + serializeURL
+    result += (url.includes('?') ? `&` : `?`) + serializeURL
   }
 
-  return url
+  return result
 }
