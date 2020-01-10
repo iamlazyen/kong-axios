@@ -56,6 +56,7 @@ node > 8.0
 - [ ] Makefile操作
 - [ ] linux常用命令及sh脚本
 - [ ] webstrom快捷键及系统快捷键
+- [ ] 编写单元测试
 
 ## License
 
