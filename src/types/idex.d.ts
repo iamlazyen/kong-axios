@@ -19,4 +19,5 @@ export interface AxiaosConfig {
   method: Method
   data?: any
   params?: any
+  headers?: any
 }
