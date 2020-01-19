@@ -1,12 +1,12 @@
-import { AxiaosConfig } from '../types/idex'
+import { AxiaosConfig, AxiosResponsePromise } from '../types/idex'
 import { xhr } from './xhr'
 import { buildURL } from '../helpers/url'
 import { transformRequestData } from '../helpers/data'
 import { transformRequestHeaders } from '../helpers/headers'
 
-export function axios(config: AxiaosConfig) {
+export function axios(config: AxiaosConfig): AxiosResponsePromise {
   processConfig(config)
-  xhr(config)
+  return xhr(config)
 }
 
 function processConfig(config: AxiaosConfig) {
