@@ -3,6 +3,7 @@ import {
   AxiosResponse,
   AxiosResponsePromise
 } from '../types/idex'
+import { parseHeaders } from '../helpers/headers'
 
 export function xhr(config: AxiaosConfig): AxiosResponsePromise {
   return new Promise((resolve, reject) => {
@@ -21,7 +22,7 @@ export function xhr(config: AxiaosConfig): AxiosResponsePromise {
         return
       }
 
-      const responseHeaders = xhr.getAllResponseHeaders()
+      const responseHeaders = parseHeaders(xhr.getAllResponseHeaders())
       const responseData =
         responseType && responseType !== 'text'
           ? xhr.response
