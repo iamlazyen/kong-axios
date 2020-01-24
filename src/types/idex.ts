@@ -21,6 +21,7 @@ export interface AxiaosConfig {
   params?: any
   headers?: any
   responseType?: XMLHttpRequestResponseType
+  timeout?: number
 }
 
 export interface AxiosResponse {
@@ -33,3 +34,11 @@ export interface AxiosResponse {
 }
 
 export interface AxiosResponsePromise extends Promise<AxiosResponse> {}
+
+export interface AxiosError extends Error {
+  config: AxiosResponse
+  code?: string
+  request?: any
+  response?: AxiosResponse
+  isAxiosError: boolean
+}

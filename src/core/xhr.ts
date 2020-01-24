@@ -4,10 +4,11 @@ import {
   AxiosResponsePromise
 } from '../types/idex'
 import { parseHeaders } from '../helpers/headers'
+import { createError } from '../helpers/error'
 
 export function xhr(config: AxiaosConfig): AxiosResponsePromise {
   return new Promise((resolve, reject) => {
-    const { url, method, data, headers, responseType } = config
+    const { url, method, data, headers, responseType, timeout } = config
 
     const xhr = new XMLHttpRequest()
 
@@ -15,10 +16,17 @@ export function xhr(config: AxiaosConfig): AxiosResponsePromise {
       xhr.responseType = responseType
     }
 
+    if (timeout) {
+      xhr.timeout = timeout
+    }
+
     xhr.open(method, url, true)
 
     xhr.onreadystatechange = function() {
       if (xhr.readyState !== 4) {
+        return
+      }
+      if (xhr.status === 0) {
         return
       }
 
@@ -36,7 +44,28 @@ export function xhr(config: AxiaosConfig): AxiosResponsePromise {
         request: xhr
       }
 
-      resolve(response)
+      if (xhr.status >= 200 && xhr.status < 300) {
+        resolve(response)
+      } else {
+        reject(
+          createError(
+            `Request failed with satus code ${response.status}`,
+            config,
+            null,
+            xhr,
+            response
+          )
+        )
+      }
+    }
+
+    xhr.ontimeout = function() {
+      reject(
+        createError(`Timeout of ${timeout}ms`, config, 'connect time out', xhr)
+      )
+    }
+    xhr.onerror = function() {
+      reject(createError('Network Error', config, null, xhr))
     }
 
     Object.keys(headers).forEach(name => {

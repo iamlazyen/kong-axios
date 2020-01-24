@@ -1,4 +1,4 @@
-import { axios } from '../src/index'
+import axios, { AxiosError }  from '../src/index'
 
 if ((module as any).hot) {
   (module as any).hot.accept();
@@ -13,4 +13,8 @@ axios({
   params: {
     bar: 'baz'
   }
+}).then(res => {
+  console.log(res)
+}).catch((err: AxiosError) => {
+  console.log(err.message)
 })

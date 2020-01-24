@@ -8,7 +8,7 @@ import { buildURL } from '../helpers/url'
 import { transformRequestData, transformResponseData } from '../helpers/data'
 import { transformRequestHeaders } from '../helpers/headers'
 
-export function axios(config: AxiaosConfig): AxiosResponsePromise {
+export default function axios(config: AxiaosConfig): AxiosResponsePromise {
   processConfig(config)
   return xhr(config).then(res => {
     return processResponse(res)
