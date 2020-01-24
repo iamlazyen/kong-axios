@@ -6,7 +6,10 @@ if ((module as any).hot) {
 
 axios({
   method: 'get',
-  url: '/base/get?foo=bar',
+  url: '/test',
+  headers: {
+    'content-type': 'application/json;charset=utf-8'
+  },
   params: {
     bar: 'baz'
   }

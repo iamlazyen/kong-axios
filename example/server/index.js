@@ -36,7 +36,9 @@ const router = express.Router()
 
 router.get('/test', function(req, res) {
   res.json({
-    msg: `hello world`
+    data: {
+      name: 'kdp'
+    }
   })
 })
 
