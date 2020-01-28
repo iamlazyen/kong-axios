@@ -16,7 +16,7 @@ export type Method =
 
 export interface AxiosConfig {
   url?: string
-  method: Method
+  method?: Method
   data?: any
   params?: any
   headers?: any
@@ -56,4 +56,5 @@ export interface AxiosInterface {
 
 export interface AxiosInstance extends AxiosInterface {
   (config: AxiosConfig): AxiosResponsePromise
+  (url: string, config?: AxiosConfig): AxiosResponsePromise
 }

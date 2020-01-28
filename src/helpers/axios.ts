@@ -7,7 +7,15 @@ import {
 import dispatchRequest from '../core/dispatchRequest'
 
 export default class Axios implements AxiosInterface {
-  request(config: AxiosConfig): AxiosResponsePromise {
+  request(url: any, config?: any): AxiosResponsePromise {
+    if (typeof url === 'string') {
+      if (!config) {
+        config = {}
+      }
+      config.url = url
+    } else {
+      config = url
+    }
     return dispatchRequest(config)
   }
 

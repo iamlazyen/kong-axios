@@ -4,9 +4,8 @@ if ((module as any).hot) {
   (module as any).hot.accept();
 }
 
-axios({
+axios('/test', {
   method: 'get',
-  url: '/test',
   headers: {
     'content-type': 'application/json;charset=utf-8'
   },
@@ -18,3 +17,5 @@ axios({
 }).catch((err: AxiosError) => {
   console.log(err.message)
 })
+
+
