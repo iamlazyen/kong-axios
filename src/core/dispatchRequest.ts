@@ -4,7 +4,9 @@ import { buildURL } from '../helpers/url'
 import { transformRequestData, transformResponseData } from '../helpers/data'
 import { transformRequestHeaders } from '../helpers/headers'
 
-export default function axios(config: AxiosConfig): AxiosResponsePromise {
+export default function dipatchRequest(
+  config: AxiosConfig
+): AxiosResponsePromise {
   processConfig(config)
   return xhr(config).then(res => {
     return processResponse(res)
@@ -18,7 +20,7 @@ function processConfig(config: AxiosConfig) {
 
   function transformURL(config: AxiosConfig) {
     const { url, params } = config
-    return buildURL(url, params)
+    return buildURL(url!, params)
   }
 
   function transformData(config: AxiosConfig) {
