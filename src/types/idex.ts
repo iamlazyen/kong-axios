@@ -14,7 +14,7 @@ export type Method =
   | 'options'
   | 'OPTIONS'
 
-export interface AxiaosConfig {
+export interface AxiosConfig {
   url: string
   method: Method
   data?: any
@@ -29,7 +29,7 @@ export interface AxiosResponse {
   status: number
   statusText: string
   headers: any
-  config: AxiaosConfig
+  config: AxiosConfig
   request: any
 }
 
@@ -41,4 +41,8 @@ export interface AxiosError extends Error {
   request?: any
   response?: AxiosResponse
   isAxiosError: boolean
+}
+
+export interface Axios {
+  request(config: AxiosConfig): AxiosResponsePromise
 }

@@ -1,12 +1,8 @@
-import {
-  AxiaosConfig,
-  AxiosResponse,
-  AxiosResponsePromise
-} from '../types/idex'
+import { AxiosConfig, AxiosResponse, AxiosResponsePromise } from '../types/idex'
 import { parseHeaders } from '../helpers/headers'
 import { createError } from '../helpers/error'
 
-export function xhr(config: AxiaosConfig): AxiosResponsePromise {
+export function xhr(config: AxiosConfig): AxiosResponsePromise {
   return new Promise((resolve, reject) => {
     const { url, method, data, headers, responseType, timeout } = config
 

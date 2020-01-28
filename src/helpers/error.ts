@@ -1,15 +1,15 @@
-import { AxiaosConfig, AxiosResponse } from '../types/idex'
+import { AxiosConfig, AxiosResponse } from '../types/idex'
 
 export class AxiosError extends Error {
   isAxiosError: boolean
-  config: AxiaosConfig
+  config: AxiosConfig
   code?: string | null
   request?: any
   response?: AxiosResponse
 
   constructor(
     message: string,
-    config: AxiaosConfig,
+    config: AxiosConfig,
     code?: string | null,
     request?: any,
     response?: AxiosResponse
@@ -28,7 +28,7 @@ export class AxiosError extends Error {
 
 export function createError(
   message: string,
-  config: AxiaosConfig,
+  config: AxiosConfig,
   code?: string | null,
   request?: any,
   response?: AxiosResponse

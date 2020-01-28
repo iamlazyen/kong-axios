@@ -1,4 +1,4 @@
-import { AxiaosConfig } from '../types/idex'
+import { AxiosConfig } from '../types/idex'
 import { isDate, isObject } from './index'
 
 function encode(val: string): string {
